@@ -1,10 +1,10 @@
-import React from "react";
+import React , { Component } from "react";
 import CustomersService from "./CustomersService";
 
 const customersService = new CustomersService();
 
 
-class CustomerCreateUpdate extends Comment {
+class CustomerCreateUpdate extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);

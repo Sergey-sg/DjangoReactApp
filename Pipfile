@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 django-environ = "*"
 django-debug-toolbar = "*"
+whitenoise = "*"
 
 [dev-packages]
 
