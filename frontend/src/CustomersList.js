@@ -16,8 +16,8 @@ class CustomersList extends Component {
     }
 
     componentDidMount() {
-        customersService.getCustomers().then(function (result) {
-            this.setState({customers: result.data, nextPageURL: result.nextlink})
+        customersService.getCustomers().then((result) => {
+            this.setState( {customers: result.data, nextPageURL: result.nextlink} );
         });
     }
 
@@ -26,13 +26,13 @@ class CustomersList extends Component {
             var newArr = this.state.customers.filter(function(obj) {
                 return obj.pk !== pk;
             });
-            this.setState({customers: newArr})
+            this.setState({customers: newArr});
         });
     }
 
     nextPage(){
         customersService.getCustomersByURL(this.state.nextPageURL).then((result) => {
-            this.setState({customers: result.data, nextPageURL: result.nextlink})
+            this.setState({customers: result.data, nextPageURL: result.nextlink});
         });
     }
 
@@ -63,10 +63,11 @@ class CustomersList extends Component {
                                 <td>{customer.address}</td>
                                 <td>{customer.description}</td>
                                 <td>
-                                    <button onClick={(e) => this.handleDelete(e, customer.pk) }>
-                                        Delete
+                                    <button className="btn btn-danger" onClick={(e) => this.handleDelete(e, customer.pk) }>
+                                        Delete  
                                     </button>
-                                    <a href={"/customer/" + customer.pk}>  {/* customers/ */}
+                                    <br></br>
+                                    <a className="btn btn-warning" href={"/customer/" + customer.pk}>  {/* customers/ */}
                                         Update
                                     </a>
                                 </td>

@@ -25,7 +25,9 @@ DEBUG = env("DEBUG")
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000/"]
 
 
 # Application definition
@@ -118,9 +120,3 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ORIGIN_ALLOW_ALL = False
-
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',
-)
