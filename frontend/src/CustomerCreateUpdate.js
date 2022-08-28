@@ -1,7 +1,6 @@
 import React , { Component } from "react";
 import CustomersService from "./CustomersService";
 
-import { Link, useParams } from 'react-router-dom';
 
 const customersService = new CustomersService();
 
@@ -13,9 +12,11 @@ class CustomerCreateUpdate extends Component {
     }
 
     componentDidMount(){
-        const {match: {params}} = this.props;
-        if (params && params.pk) {
-            customersService.getCustomer(params.pk).then((customer) => {
+        const params = parseInt(window.location.href.split('/')[4]);
+        console.log(typeof params, params);
+        if (params && typeof params === 'number') {
+            console.log('in get customer')
+            customersService.getCustomer(params).then((customer) => {
                 this.refs.first_name.value = customer.first_name;
                 this.refs.last_name.value = customer.last_name;
                 this.refs.email.value = customer.email;
@@ -60,9 +61,9 @@ class CustomerCreateUpdate extends Component {
     }
 
     handleSubmit(event) {
-        const { match: {params}} = this.props
-        if (params && params.pk) {
-            this.handleUpdate(params.pk);
+        const params = parseInt(window.location.href.split('/')[4]);
+        if (params && typeof params === 'number') {
+            this.handleUpdate(params);
         }
         else {
             this.handleCreate();
@@ -75,22 +76,22 @@ class CustomerCreateUpdate extends Component {
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label>First Name:</label>
-                    <input className="form-control" type="text" name="first_name" />
+                    <input className="form-control" type="text" ref="first_name" />
 
                     <label>Last Name:</label>
-                    <input className="form-control" type="text" name="last_name" />
+                    <input className="form-control" type="text" ref="last_name" />
 
                     <label>Phone:</label>
-                    <input className="form-control" type="text" name="phone" />
+                    <input className="form-control" type="text" ref="phone" />
 
                     <label>Email:</label>
-                    <input className="form-control" type="text" name="email" />
+                    <input className="form-control" type="text" ref="email" />
 
                     <label>Address:</label>
-                    <input className="form-control" type="text" name="address" />
+                    <input className="form-control" type="text" ref="address" />
 
                     <label>Description:</label>
-                    <textarea className="form-control" type="text" name="description"></textarea>
+                    <textarea className="form-control" type="text" ref="description"></textarea>
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
                 </div>    

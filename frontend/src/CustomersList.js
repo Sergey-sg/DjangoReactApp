@@ -66,8 +66,7 @@ class CustomersList extends Component {
                                     <button className="btn btn-danger" onClick={(e) => this.handleDelete(e, customer.pk) }>
                                         Delete  
                                     </button>
-                                    <br></br>
-                                    <a className="btn btn-warning" href={"/customer/" + customer.pk}>  {/* customers/ */}
+                                    <a className="btn btn-warning" href={"/customer/" + customer.pk}>
                                         Update
                                     </a>
                                 </td>

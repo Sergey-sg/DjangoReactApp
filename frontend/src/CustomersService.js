@@ -16,12 +16,12 @@ export default class CustomersService{
     }
 
     getCustomer(pk) {
-        const url = `${API_URL}/api/customers/${pk}`
+        const url = `${API_URL}/api/customers/${pk}/`
         return axios.get(url).then(response => response.data);
     }
 
     deleteCustomer(customer) {
-        const url = `${API_URL}/api/customers/${customer.pk}`;
+        const url = `${API_URL}/api/customers/${customer.pk}/`;
         return axios.delete(url);
     }
 
@@ -31,7 +31,8 @@ export default class CustomersService{
     }
 
     updateCustomer(customer) {
-        const url = `${API_URL}/api/customers/${customer.pk}`;
+        const url = `${API_URL}/api/customers/${customer.pk}/`;
+        console.log(customer.pk)
         return axios.put(url, customer);
     }
 }
